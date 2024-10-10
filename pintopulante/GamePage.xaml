@@ -3,6 +3,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="pintopulante.GamePage">
 
+        <Grid>
+            <Image Source="game.jpg"
+                   Aspect="AspectFill"/>
+
+            <Image Source="junin.png"
+                   x:Name="imgJunin"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start"
+                   />
+
+            <Image Source="pirogocima.png"
+                   x:Name="cima"
+                   HorizontalOptions="End"
+                   VerticalOptions="Start"/>
+
+            <Image Source="pirogo.png"
+                   x:Name="baxo"
+                   HorizontalOptions="End"
+                   VerticalOptions="End"/>
+
+            <Image Source="lauva.png"
+                   x:Name="lauva"
+                   HorizontalOptions="Start"
+                   VerticalOptions="End"/>
+
+            <Frame x:Name="frameGameOver"
+                    BackgroundColor="#99000000"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="OnGameOverClicked"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="gameover.jpg"/>
+            </Frame>
+        </Grid>
 
 
 
@@ -15,5 +51,4 @@
 
 
 
-             
 </ContentPage>

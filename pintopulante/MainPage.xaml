@@ -10,11 +10,13 @@
                         <RowDefinition Height="60"/>
                         <RowDefinition Height="60"/>
                     </Grid.RowDefinitions>
-                  <Image Source="start.jpg"
+                  <Image Source="jumpknightdefinitivo.jpg"
                      Grid.RowSpan="4"
                     Aspect="AspectFill"/>  
             <!-- botao iniciar -->
+            
                     <Button Text="Iniciar"
+                        Clicked="Starting"
                         Grid.Row="1"
                         Margin="10, 5"
                         BackgroundColor="#B22222"

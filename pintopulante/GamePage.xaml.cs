@@ -15,9 +15,25 @@ public partial class GamePage : ContentPage
         imgJunin.TranslationY += Gravidade;
     }
 
-    protected override void OnAppearing()
+
+    async Task Desenha()
     {
-        base.OnApearring();
+        while (!estaMorto)
+        {
+            AplicaGravidade();
+            await Task.Delay(tempoEntreFrames);
+        }
+    }
+
+    void OnGameOverClicked(object sender, EventArgs e)
+    {
+        frameGameOver.IsVisible = false;
+        Inicializar();
         Desenha();
+    }
+
+    void Inicializar()
+    {
+        imgJunin.TranslationY = 0;
     }
 }
