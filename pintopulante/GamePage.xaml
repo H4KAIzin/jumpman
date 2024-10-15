@@ -7,13 +7,14 @@
         <Grid>
             <Image Source="game.jpg"
                    Aspect="AspectFill"/>
-       <VerticalStackLayout>
+       
             <Image Source="junin.png"
                    x:Name="imgJunin"
                    HorizontalOptions="Start"
-                   VerticalOptions="Start"
-                   HeightRequest="90"/>
-       </VerticalStackLayout>
+                   VerticalOptions="Center"
+                   HeightRequest="70"
+                   Aspect="AspectFit"/>
+       
             <Image Source="pirogocima.png"
                    x:Name="imgcanocima"
                    HorizontalOptions="End"
@@ -27,8 +28,10 @@
                    HeightRequest="380"/>
 
             <Image Source="lauva.png"
-                   x:Name="lauva"
+                   x:Name="imglauva"
                    HorizontalOptions="Start"
+                   HeightRequest="120"
+                   Aspect="Fill"
                    VerticalOptions="End"/>
 
             <Frame x:Name="frameGameOver"
