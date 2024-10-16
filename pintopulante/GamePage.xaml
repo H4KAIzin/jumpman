@@ -19,13 +19,13 @@
                    x:Name="imgcanocima"
                    HorizontalOptions="End"
                    VerticalOptions="Start"
-                   HeightRequest="380"/>
+                   HeightRequest="500"/>
 
             <Image Source="pirogo.png"
                    x:Name="imgcanobaxo"
                    HorizontalOptions="End"
                    VerticalOptions="End"
-                   HeightRequest="380"/>
+                   HeightRequest="500"/>
 
             <Image Source="lauva.png"
                    x:Name="imglauva"
@@ -44,17 +44,10 @@
                             </Frame.GestureRecognizers>
                             <Image Source="gameover.jpg"/>
             </Frame>
+
+
+            <Grid.GestureRecognizers>
+                     <TapGestureRecognizer Tapped="OnGridClicked"/>
+            </Grid.GestureRecognizers>
         </Grid>
-
-
-
-
-
-
-
-
-
-
-
-
 </ContentPage>

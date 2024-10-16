@@ -1,13 +1,20 @@
+using System.Runtime.CompilerServices;
+
 namespace pintopulante;
 
 public partial class GamePage : ContentPage
 {
-    const int Gravidade = 2;
-    const int tempoEntreFrames = 25;
+    const int Gravidade = 6;
+    const int tempoEntreFrames = 30;
     bool estaMorto = false;
     double LarguraJanela = 3;
     double AlturaJanela = 0;
-    int Velocidade = 7;
+    int Velocidade = 14;
+    const int forcaPulo = 70;
+    const int maxTempoPulando = 0; //frames
+    bool estaPulando = false;
+    int tempoPulando = 0;
+    const int aberturaMinima = 200;
 
  	public GamePage()
 	{
@@ -33,6 +40,10 @@ public partial class GamePage : ContentPage
                 frameGameOver.IsVisible = true;
                 break;
             }
+            if(estaPulando)
+               AplicaPulo();
+            else
+                AplicaGravidade();
             await Task.Delay(tempoEntreFrames); 
         }
     }
@@ -64,8 +75,13 @@ public partial class GamePage : ContentPage
         {
             imgcanobaxo.TranslationX = 0;
             imgcanocima.TranslationX = 0;
+
+            var alturaMax =- 100;
+            var alturaMin =- imgcanobaxo.HeightRequest;
+            imgcanocima.TranslationY = Random.Shared.Next((int)alturaMin, (int)alturaMax);
+            imgcanobaxo.TranslationY = imgcanocima.TranslationY + aberturaMinima + imgcanobaxo.HeightRequest;
         }
-    }
+    }   
 
     bool VerificaColisao()
     {
@@ -97,5 +113,21 @@ public partial class GamePage : ContentPage
         else
             return false;
 
+    }
+
+    void AplicaPulo()
+    {
+        imgJunin.TranslationY -= forcaPulo;
+        tempoPulando++;
+        if (tempoPulando >= maxTempoPulando)
+        {
+            estaPulando = false;
+            tempoPulando = 0;
+        }
+    }
+
+    void OnGridClicked(object sender, TappedEventArgs a)
+    {
+        estaPulando = true;
     }
 }
