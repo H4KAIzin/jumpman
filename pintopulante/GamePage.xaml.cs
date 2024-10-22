@@ -57,7 +57,11 @@ public partial class GamePage : ContentPage
 
     void Inicializar()
     {
+        imgcanocima.TranslationX =- LarguraJanela;
+        imgcanobaxo.TranslationY =- LarguraJanela;
         imgJunin.TranslationY = 0;
+        imgJunin.TranslationX = 0;
+        GerenciaCanos();
     }
 
     protected override void OnSizeAllocated(double w, double h)
@@ -88,7 +92,9 @@ public partial class GamePage : ContentPage
         if(!estaMorto)
         {
             if(VerificaColisaoTeto()|| 
-            VerificaColisaoChao())
+            VerificaColisaoChao()||
+            VerificaColisaoCanoCima()||
+            VerificaColisaoCanoBaxo())
                {
                 return true;
                }
@@ -129,5 +135,37 @@ public partial class GamePage : ContentPage
     void OnGridClicked(object sender, TappedEventArgs a)
     {
         estaPulando = true;
+    }
+
+    bool VerificaColisaoCanoCima()
+    {
+        var posHJunin = (LarguraJanela/2)-(imgJunin.WidthRequest/2);
+        var posVJunin = (AlturaJanela/2)-(imgJunin.HeightRequest/2) + imgJunin.TranslationY;
+        if (posHJunin >= Math.Abs(imgcanocima.TranslationX - imgcanocima.WidthRequest)&&
+            posHJunin <= Math.Abs(imgcanocima.TranslationX + imgcanocima.WidthRequest)&&
+            posVJunin <= imgcanocima.HeightRequest + imgJunin.TranslationY)
+            {
+                return true;
+            } 
+            else
+            {
+                return false;
+            }
+    }
+
+    bool VerificaColisaoCanoBaxo()
+    {
+        var posVJunin = (LarguraJanela/2)-(imgJunin.WidthRequest/2);
+        var posHJunin = (AlturaJanela/2)-(imgJunin.HeightRequest/2) + imgJunin.TranslationY;
+        if (posVJunin >= Math.Abs(imgcanobaxo.TranslationX - imgcanobaxo.WidthRequest)&&
+            posVJunin <= Math.Abs(imgcanobaxo.TranslationX + imgcanobaxo.WidthRequest)&&
+            posHJunin <= imgcanobaxo.HeightRequest + imgJunin.TranslationY)
+            {
+                return true;
+            } 
+            else
+            {
+                return false;
+            }
     }
 }
