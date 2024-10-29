@@ -1,9 +1,12 @@
 using System.Runtime.CompilerServices;
+﻿using Plugin.Maui.Audio;
+
 
 namespace pintopulante;
 
 public partial class GamePage : ContentPage
 {
+    int score = 0;
     const int Gravidade = 6;
     const int tempoEntreFrames = 30;
     bool estaMorto = false;
@@ -37,6 +40,7 @@ public partial class GamePage : ContentPage
             if(VerificaColisao())
             {
                 estaMorto = true;
+                SoundHelper.Play("morto.wav");
                 frameGameOver.IsVisible = true;
                 break;
             }
